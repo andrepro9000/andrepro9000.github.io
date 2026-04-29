@@ -1,44 +1,437 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Meu Site Profissional</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-    }
-    .container {
-      padding: 100px 20px;
-    }
-    h1 {
-      font-size: 48px;
-      color: #38bdf8;
-    }
-    p {
-      font-size: 20px;
-      color: #cbd5f5;
-    }
-    .btn {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 15px 30px;
-      background: #38bdf8;
-      color: black;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egas Moniz: O Guardião da Honra e o Arquiteto Invisível de Portugal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #FFD700;
+            font-family: 'Lora', Georgia, serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Animação de partículas douradas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 215, 0, 0.4);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Título principal */
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-align: center;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.1);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #B8860B;
+            margin-bottom: 50px;
+            font-style: italic;
+            letter-spacing: 3px;
+        }
+
+        /* Imagem destaque 3D */
+        .hero-image-container {
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+            padding: 20px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+            animation: heroFloat 6s ease-in-out infinite;
+        }
+
+        .hero-image-wrapper:hover {
+            transform: rotateY(5deg) rotateX(5deg) scale(1.02);
+        }
+
+        @keyframes heroFloat {
+            0%, 100% { transform: translateY(0) rotateY(0deg); }
+            50% { transform: translateY(-10px) rotateY(2deg); }
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            box-shadow: 
+                0 20px 60px rgba(255, 215, 0, 0.2),
+                0 0 100px rgba(255, 215, 0, 0.1),
+                inset 0 0 30px rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            border-radius: 12px;
+            transform: translateZ(-20px);
+            animation: glowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Linha decorativa */
+        .divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            margin: 40px auto;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '✦';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFD700;
+            font-size: 1.5rem;
+            background: #000;
+            padding: 0 15px;
+        }
+
+        /* Seções */
+        .section {
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.8s; }
+        .section:nth-child(6) { animation-delay: 1.0s; }
+        .section:nth-child(7) { animation-delay: 1.2s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: #FFD700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+            border-left: 4px solid #FFD700;
+            padding-left: 20px;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            color: #E5C100;
+            text-align: justify;
+            margin-bottom: 20px;
+            text-shadow: 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+
+        /* Imagens do artigo */
+        .article-image {
+            width: 100%;
+            max-width: 700px;
+            margin: 30px auto;
+            display: block;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .article-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 215, 0, 0.15);
+            border-color: rgba(255, 215, 0, 0.4);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #B8860B;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* Citação destacada */
+        .quote {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(184, 134, 11, 0.05));
+            border-left: 4px solid #FFD700;
+            padding: 25px 30px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #FFD700;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+
+        .quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: rgba(255, 215, 0, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        /* Rodapé */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            margin-top: 60px;
+            color: #B8860B;
+            font-size: 0.9rem;
+        }
+
+        .footer .crown {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #B8860B;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFD700;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .section p {
+                font-size: 1rem;
+            }
+
+            .hero-image {
+                max-width: 100%;
+            }
+        }
+
+        /* Efeito de brilho no texto */
+        .glow-text {
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            to { text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.3); }
+        }
+    </style>
+<base target="_blank">
 </head>
 <body>
-  <div class="container">
-    <h1>Seu site profissional 🚀</h1>
-    <p>Eu crio páginas modernas para empresas</p>
-    <a class="btn" href="#">Fale comigo</a>
-  </div>
+    <!-- Partículas douradas -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- Título -->
+        <h1 class="main-title glow-text">Egas Moniz</h1>
+        <p class="subtitle">O Guardião da Honra e o Arquiteto Invisível de Portugal</p>
+
+        <!-- Imagem Destaque 3D -->
+        <div class="hero-image-container">
+            <div class="hero-image-wrapper">
+                <img src="https://speed.siasitecriative.com.br/wp-content/uploads/2026/04/2121212121.png" 
+                     alt="Egas Moniz - O homem que Portugal esqueceu" 
+                     class="hero-image">
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Introdução -->
+        <div class="section">
+            <p>A história da fundação de Portugal é frequentemente narrada através do retinir das espadas e das conquistas territoriais de D. Afonso Henriques. No entanto, nos alicerces morais e diplomáticos da nação, encontra-se uma figura cuja grandeza não se mediu pela força das armas, mas pela inabalável integridade da sua palavra. Egas Moniz de Ribadouro, o "Aio", representa o que as fontes descrevem como a maior injustiça da memória histórica portuguesa: um homem que, sem exército ou ouro, salvou o futuro do reino com uma corda ao pescoço.</p>
+        </div>
+
+        <!-- Seção 1 -->
+        <div class="section">
+            <h2 class="section-title">O Papel do Aio e a Forja de um Rei</h2>
+            <p>Para compreender a magnitude dos atos de Egas Moniz, é necessário recuar ao século XII, onde o título de "aio" possuía uma relevância que transcendia em muito a educação doméstica moderna. Na sociedade feudal, o aio era o responsável absoluto pela formação moral, política e militar do herdeiro de uma linhagem. Egas Moniz, pertencente à influente linhagem de Ribadouro, recebeu de D. Henrique de Borgonha e D. Teresa a missão de criar o jovem Afonso Henriques.</p>
+            <p>Como mentor, Egas não apenas ensinou o pupilo a montar e combater, mas moldou o caráter daquele que viria a ser o primeiro rei de Portugal. A lealdade entre ambos era considerada quase tão sagrada quanto um vínculo de sangue, tornando Egas Moniz o verdadeiro "criador" do rei. Esta relação de profunda confiança colocou o futuro do Condado Portucalense nas mãos de um homem cuja palavra tinha o peso de um tratado internacional.</p>
+        </div>
+
+        <!-- Seção 2 -->
+        <div class="section">
+            <h2 class="section-title">O Cerco de Guimarães: A Palavra como Penhor</h2>
+            <p>Em 1127, o projeto de independência de Portugal esteve prestes a soçobrar antes mesmo de se consolidar. O exército de Afonso VII de Leão, o monarca mais poderoso da Península Ibérica, cercou os muros de Guimarães. A cidade, sem condições militares para resistir a tamanha desproporção de forças, enfrentava a destruição iminente.</p>
+            <p>Percebendo que as muralhas não seriam suficientes, Egas Moniz tomou a iniciativa de sair ao encontro do rei leonês. Sem garantias de segurança, ele empenhou a sua honra pessoal, prometendo que Afonso Henriques reconheceria a autoridade de Leão e se manteria como um vassalo fiel. Confiando na palavra daquele nobre respeitado, Afonso VII levantou o cerco, e Guimarães pôde respirar. Contudo, a promessa fora feita pelo aio, e o pupilo, movido por uma ambição de soberania total, não se sentia obrigado a cumpri-la.</p>
+        </div>
+
+        <!-- Seção 3 -->
+        <div class="section">
+            <h2 class="section-title">A Divergência entre Política e Honra</h2>
+            <p>Nos anos que se seguiram, Afonso Henriques consolidou o seu poder interno, culminando na Batalha de São Mamede em 1128, onde derrotou a facção galega de Fernão Peres de Trava e afastou a sua mãe, D. Teresa, do governo. Com o triunfo, o jovem infante prosseguiu a sua política de independência, agindo como se o compromisso de 1127 nunca tivesse existido.</p>
+            <p>Para Egas Moniz, essa omissão era uma mancha insuportável. Na lógica feudal, a quebra de uma promessa não era apenas uma falha diplomática; era uma dívida de honra que desonrava o nome de toda uma linhagem. Diante da escolha entre viver com a desonra ou enfrentar as consequências, Egas Moniz tomou uma decisão que as fontes descrevem como perturbadora pela sua calma e determinação.</p>
+        </div>
+
+        <!-- Imagem 1 -->
+        <div class="section">
+            <img src="https://siasitecriative.com.br/wp-content/uploads/2026/04/1.png" 
+                 alt="O Sacrifício em Toledo - Egas Moniz e sua família diante de Afonso VII" 
+                 class="article-image">
+            <p class="image-caption">O Sacrifício em Toledo: Egas Moniz, sua esposa e filhos ajoelhados com cordas ao pescoço diante do rei Afonso VII</p>
+        </div>
+
+        <!-- Seção 4 -->
+        <div class="section">
+            <h2 class="section-title">O Sacrifício em Toledo: A Corda ao Pescoço</h2>
+            <p>Sem pedir permissão ao seu pupilo, Egas Moniz reuniu a sua família e partiu para Toledo, onde Afonso VII mantinha a sua corte. O cenário que se desenrolou no palácio real foi inédito: um nobre poderoso cruzara a Península, não para negociar, mas para se entregar voluntariamente. Ele, a sua esposa e os seus filhos apresentaram-se vestidos de penitentes, ajoelhados e com cordas ao redor dos pescoços.</p>
+            <p>O gesto simbolizava que Egas Moniz reconhecia a dívida e oferecia a sua própria vida, e a dos seus, para pagar a promessa quebrada pelo rei que ele mesmo criara. Diante do trono, ele assumiu toda a responsabilidade, sem culpar Afonso Henriques, e aguardou a sentença de morte.</p>
+
+            <div class="quote">
+                O impacto desta demonstração de caráter foi tal que o rei Afonso VII, comovido pela grandeza do gesto, ordenou a retirada das cordas. Num ato de reconhecimento, o monarca perdoou a família incondicionalmente, permitindo o seu regresso livre ao condado. Afonso VII respondeu "à honra com honra", reconhecendo uma virtude que a política pura raramente consegue produzir.
+            </div>
+        </div>
+
+        <!-- Seção 5 -->
+        <div class="section">
+            <h2 class="section-title">Legado, Túmulo e o Esquecimento Moderno</h2>
+            <p>Egas Moniz regressou a Portugal e continuou a servir o reino, exercendo em 1136 o cargo de Mordomo-Mor, uma das posições mais próximas de D. Afonso Henriques. Ele faleceu em 1146 e foi sepultado no Mosteiro de Paço de Sousa, em Penafiel. O seu túmulo de mármore, que permanece de pé há quase nove séculos, ostenta a cena de Toledo esculpida na pedra — um registro eterno da família encordoada diante do rei estrangeiro.</p>
+            <p>Apesar da sua importância vital, a memória de Egas Moniz sofre hoje de um relativo esquecimento em comparação com outros heróis nacionais como Vasco da Gama ou Nun'Álvares Pereira. Na Estação de São Bento, no Porto, um grande painel de azulejos retrata o episódio de Toledo, mas milhares de passageiros passam diariamente por ele sem conhecer o homem ajoelhado ou o facto de que, sem ele, Portugal poderia nunca ter existido.</p>
+        </div>
+
+        <!-- Imagem 2 -->
+        <div class="section">
+            <img src="https://siasitecriative.com.br/wp-content/uploads/2026/04/2.png" 
+                 alt="Túmulo de Egas Moniz no Mosteiro de Paço de Sousa" 
+                 class="article-image">
+            <p class="image-caption">Túmulo de Egas Moniz no Mosteiro de Paço de Sousa — quase nove séculos de história esculpida em mármore</p>
+        </div>
+
+        <!-- Conclusão -->
+        <div class="section">
+            <p>Embora alguns historiadores questionem se os detalhes do episódio ocorreram exatamente como as crónicas de Duarte Galvão descrevem, a figura de Egas Moniz transcendeu o facto histórico para se tornar um mito de fundação. Luís de Camões imortalizou-o n' Os Lusíadas como o símbolo da virtude do cumprimento, a ideia de que a honra e a palavra dada valem mais do que qualquer conveniência política. O túmulo em Paço de Sousa não é, portanto, um monumento à derrota, mas uma imagem do que Portugal escolheu lembrar de si mesmo: a dignidade de um homem que salvou uma nação com a sua própria honra.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Rodapé -->
+        <div class="footer">
+            <span class="crown">👑</span>
+            <p>"A honra e a palavra dada valem mais do que qualquer conveniência política."</p>
+            <p style="margin-top: 15px; font-size: 0.8rem; color: #666;">Artigo sobre Egas Moniz de Ribadouro — O Aio de Portugal</p>
+        </div>
+    </div>
+
+    <script>
+        // Gerar partículas douradas
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+            particle.style.width = (1 + Math.random() * 3) + 'px';
+            particle.style.height = particle.style.width;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Efeito parallax sutil na imagem principal
+        document.addEventListener('mousemove', (e) => {
+            const heroWrapper = document.querySelector('.hero-image-wrapper');
+            if (heroWrapper) {
+                const x = (window.innerWidth / 2 - e.pageX) / 50;
+                const y = (window.innerHeight / 2 - e.pageY) / 50;
+                heroWrapper.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            }
+        });
+    </script>
 </body>
 </html>
